@@ -7,10 +7,10 @@
 // So, the output will be 148.
    
 
-Solution:
+// Solution:
 
-Approach 1: Brute force approach, In this we buy stock on day 0 and sell it on all days from 1 to n-1 and get the maximum profit, similarly for each 
-day we'll do and compute the max profit of all possible buy and sell combinations.
+// Approach 1: Brute force approach, In this we buy stock on day 0 and sell it on all days from 1 to n-1 and get the maximum profit, similarly for each 
+// day we'll do and compute the max profit of all possible buy and sell combinations.
 
 
 import java.util.* ;
@@ -34,12 +34,12 @@ public class Solution{
 }
 
 
-Time complexity = O((N^2)
-Space Complexity = O(1)
+// Time complexity = O((N^2)
+// Space Complexity = O(1)
 
 
-Approach 2: Optimal Approach, In this, we will keep track of the minimum price so far till the ith day and sell on the ith day if the current profit 
-is more than the Maximum profit then will update the max profit.
+// Approach 2: Optimal Approach, In this, we will keep track of the minimum price so far till the ith day and sell on the ith day if the current profit 
+// is more than the Maximum profit then will update the max profit.
 
 import java.util.* ;
 import java.io.*; 
@@ -64,5 +64,5 @@ public class Solution{
 }
 
 
-Time complexity = O((N)
-Space Complexity = O(1)
+// Time complexity = O((N)
+// Space Complexity = O(1)
