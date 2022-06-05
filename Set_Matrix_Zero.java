@@ -12,7 +12,7 @@
 
 
 
-// Code:
+// Solution:
 
 // Approach 1: Using Extra space.
 
