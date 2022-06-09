@@ -27,7 +27,7 @@ public class Solution
 	public static ArrayList<Integer> nextPermutation(ArrayList<Integer> permutation) 
 	{
 		//If ArrayList is null or the length is atmost 1 then we don't have to do anything but return the permutation.
-		if(permutation == null || permutation.length <= 1) return permutation;
+		if(permutation == null || permutation.size() <= 1) return permutation;
 		int index = permutation.size() - 1;
 		//First while loop to find the breakpoint as discussed above.
 		while(index > 0) {
