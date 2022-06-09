@@ -26,35 +26,37 @@ public class Solution
 {
 	public static ArrayList<Integer> nextPermutation(ArrayList<Integer> permutation) 
 	{
+		//If ArrayList is null or the length is atmost 1 then we don't have to do anything but return the permutation.
+		if(permutation == null || permutation.length <= 1) return permutation;
 		int index = permutation.size() - 1;
-        //First while loop to find the breakpoint as discussed above.
-        while(index > 0) {
-            //If found the desired breakpoint, then terminate the loop.
-            if(permutation.get(index - 1) < permutation.get(index)) 
-                break;
-            index--;
-        }
-        //Edge case: If the breakpoint is not present in the array, then reverse the ArrayList and return answer.
-        if(index == 0) {
-            //Calling the helper function to reverse the ArrayList.
-            reverse(permutation, index, permutation.size()  - 1);
-            return permutation;
-        }
-        int index_2 = permutation.size()  - 1;
-        //Now as we found an breakpoint, we will again traverse from the backwards and look for the elements greater than the breakpoint element and swap both followed by reverse of the right half part (index + 1, array length - 1).
-        while(index_2 > 0) {
-            //Check If element if greater than breakpoint.
-            if(permutation.get(index_2) > permutation.get(index - 1)) {
-                //Swap the elements.
-                swap(permutation, index_2, index - 1);
-                //Reverse the ArrayList.
-                reverse(permutation, index, permutation.size()  - 1);
-                break;
-            }
-            index_2--;
-        }
-        //Return the answer;
-        return permutation;
+		//First while loop to find the breakpoint as discussed above.
+		while(index > 0) {
+		    //If found the desired breakpoint, then terminate the loop.
+		    if(permutation.get(index - 1) < permutation.get(index)) 
+			break;
+		    index--;
+		}
+		//Edge case: If the breakpoint is not present in the array, then reverse the ArrayList and return answer.
+		if(index == 0) {
+		    //Calling the helper function to reverse the ArrayList.
+		    reverse(permutation, index, permutation.size()  - 1);
+		    return permutation;
+		}
+		int index_2 = permutation.size()  - 1;
+		//Now as we found an breakpoint, we will again traverse from the backwards and look for the elements greater than the breakpoint element and swap both followed by reverse of the right half part (index + 1, array length - 1).
+		while(index_2 > 0) {
+		    //Check If element if greater than breakpoint.
+		    if(permutation.get(index_2) > permutation.get(index - 1)) {
+			//Swap the elements.
+			swap(permutation, index_2, index - 1);
+			//Reverse the ArrayList.
+			reverse(permutation, index, permutation.size()  - 1);
+			break;
+		    }
+		    index_2--;
+		}
+		//Return the answer;
+		return permutation;
 	}
     
     //Helper function to swap two elements in ArrayList.
