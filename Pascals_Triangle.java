@@ -12,7 +12,7 @@
  
 // Solution: 
 
-// Approach 1: We'll create an 2d ArrayList and initially we add the first row and create a previous row variable which will point to the previous row. Then we run a loop for each rows from 1 to N-1, create a new ArrayList as the current row we are computing, and inside which another loop to add total of i + 1 elements (where i is the row number, the i'th row would have i + 1 elements in it). for first and last column we'll just add 1 (if j == i OR j == 0) and for rest we'll make use of the Previous row and access it's (j - 1) + j'th element. At the end of each iteration of inner loop, we'll upadte the previous row as current one and add current to our final result.
+// Approach 1: We'll create a 2d ArrayList and initially we add the first row and create a previous row variable that will point to the previous row. Then we run a loop for each row from 1 to N-1, create a new ArrayList as the current row we are computing, and inside which another loop to add a total of i + 1 elements (where i is the row number, the ith row would have i + 1 elements in it). for first and last column we'll add 1 (if j == i OR j == 0) and for rest, we'll make use of the Previous row and access it's (j - 1) + jth element. At the end of each iteration of the inner loop, we'll update the previous row as the current one and add current to our final result.
     
 import java.util.* ;
 import java.io.*; 
