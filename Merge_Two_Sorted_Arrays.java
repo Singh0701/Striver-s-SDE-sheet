@@ -23,7 +23,7 @@ public class Solution {
     }
 }
 
-// Tme comlexity = O(N * Log(N) + N )
+// Tme comlexity = O(N * Log(N) + N)
 // Space complexity = O(N);
 
 // Approach 2: Optimal approach using the GAP method. Here we calculate the gap value by diving the total length by 2 (Ceil value if it's odd and not equal to 1), Enter a while loop while the gap value is greater than 0, inside which we'll take two pointers pointer1 at 0 and pointer2 at gap value, another while loop, while the pointer2 is less than the array length. if the condition element at pointer1 is greater than pointer2 then swap both, and keep incrementing pointers. After the inner loop terminates then recalculate the gap value by dividing by 2. At the end of the outer loop will get the sorted array.
