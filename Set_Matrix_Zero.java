@@ -16,7 +16,7 @@
 
 // Approach 1: Using Extra space.
 
-import java.util.* ;
+import java.util.*;
 import java.io.*; 
 public class Solution {
     public static void setZeros(int matrix[][]) {
