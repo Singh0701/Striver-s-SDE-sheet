@@ -8,7 +8,7 @@
 // Approach 1: Using stack data structure to reverse the linked list, as stack follows last in first out concept.
     
     
-import java.util.* ;
+import java.util.*;
 import java.io.*; 
 /*
     Following is the structure of the Singly Linked List.    
