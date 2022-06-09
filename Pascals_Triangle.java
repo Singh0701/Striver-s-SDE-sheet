@@ -43,8 +43,8 @@ public class Solution {
                 result.add(current);
                 prev = current;
             }
-        //Return the pascal triangle.
-        return result;
+            //Return the pascal triangle.
+            return result;
 	}
 }
 
