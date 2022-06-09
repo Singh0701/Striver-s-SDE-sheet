@@ -57,3 +57,39 @@ public class Solution {
 
 //Time complexity = O(N)
 //Space complexity = O(N)
+
+
+//Approach 2: Using Boyer-Moore Majority Voting Algorithm. Here we take two variables count and majorityElement and initialize with 0, now linearly traverse the array, check for the following condition:
+// if count is equal to 0 then set majorityElement to current element.
+// if the currenet element is equal to majorityElement then increment count by 1.
+// else decrement the count by 1.
+// At the end of the loop we will be left with the majority element in the array into majorityElement variable.
+
+
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+    public static int findMajority(int[] arr, int n) {
+        //Create and initialize count and majorityElement to 0.
+        int count = 0, majorityElement = 0;
+        //Iterate over to count frequencies.
+        for(int i: arr) {
+            //if count is 0 then set majorityElement to i.
+            if(count == 0)
+                majorityElement = i;
+            //if the majorityElement is equal to i then increment count by 1.
+            if(majorityElement == i)    count++;
+            //else decrement by 1.
+            else count--;
+        }
+        //Return -1 if we haven't find any element satisfying the given condition.
+        return -1;
+    }
+}
+
+
+//Time complexity = O(N)
+//Space complexity = O(1)
+
+
+
