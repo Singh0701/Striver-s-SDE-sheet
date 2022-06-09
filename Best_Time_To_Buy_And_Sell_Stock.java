@@ -5,7 +5,7 @@
 // For the given array [ 2, 100, 150, 120],
 // The maximum profit can be achieved by buying the stock at minute 0 when its price is Rs. 2 and selling it at minute 2 when its price is Rs. 150.
 // So, the output will be 148.
-   
+   
 
 // Solution:
 
@@ -18,19 +18,19 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Solution{
-    public static int maximumProfit(ArrayList<Integer> prices){
-        int maxProfit = 0;
-        //Check for all days combinations to sell the stock.
-        for(int i = 0; i < prices.size(); i++) {
-            for(int j = i + 1; j < prices.size(); j++) {
-                int currentProfit = prices.get(j) - prices.get(i);
-                //If profit is more then update the max profit.
-                if(currentProfit > maxProfit)
-                    maxProfit = currentProfit;
-            }
-        }
-        return maxProfit;
-    }
+    public static int maximumProfit(ArrayList<Integer> prices){
+        int maxProfit = 0;
+        //Check for all days combinations to sell the stock.
+        for(int i = 0; i < prices.size(); i++) {
+            for(int j = i + 1; j < prices.size(); j++) {
+                int currentProfit = prices.get(j) - prices.get(i);
+                //If profit is more then update the max profit.
+                if(currentProfit > maxProfit)
+                    maxProfit = currentProfit;
+            }
+        }
+        return maxProfit;
+    }
 }
 
 
@@ -38,7 +38,7 @@ public class Solution{
 // Space Complexity = O(1)
 
 
-// Approach 2: Optimal Approach, In this, we will keep track of the minimum price so far till the ith day and sell on the ith day if the current profit 
+// Approach 2: Optimal Approach, In this, we will keep track of the minimum price so far till the ith day and sell on an ith day if the current profit 
 // is more than the Maximum profit then will update the max profit.
 
 import java.util.* ;
@@ -46,21 +46,21 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Solution{
-    public static int maximumProfit(ArrayList<Integer> prices){
-        //Initialize minimum price so far to day 0 price.
-        int minPriceSoFar = prices.get(0);
-        int maxProfit = 0;
-        for(int i: prices) {
-            //If min price so far is giving more profit then max profit then update max profit.
-            if(maxProfit < i - minPriceSoFar)
-                maxProfit = i - minPriceSoFar;
-            //If the current day price is lower than minimum price so far then update minPriceSoFar.
-            if(minPriceSoFar > i)
-                minPriceSoFar = i;
-        }
-        //return the max profit.
-        return maxProfit;
-    }
+    public static int maximumProfit(ArrayList<Integer> prices){
+        //Initialize minimum price so far to day 0 price.
+        int minPriceSoFar = prices.get(0);
+        int maxProfit = 0;
+        for(int i: prices) {
+            //If min price so far is giving more profit then max profit then update max profit.
+            if(maxProfit < i - minPriceSoFar)
+                maxProfit = i - minPriceSoFar;
+            //If the current day price is lower than minimum price so far then update minPriceSoFar.
+            if(minPriceSoFar > i)
+                minPriceSoFar = i;
+        }
+        //return the max profit.
+        return maxProfit;
+    }
 }
 
 
