@@ -16,7 +16,7 @@
 // Approach 1: Using kadane's algorithm, here we keep track of a sum variable in which we'll keep on adding up the current element and check for two conditions that are if the sum is greater than maxSum then update maxSum, and if the sum < 0 then set sum = 0 (Because we are trying to maximize the sum, hence we don't need a sub-array whose contribution is negative to the sub-array sum). And the end we'll be left with the Maximum possible sum of a subarray.
     
     
-import java.util.* ;
+import java.util.*;
 import java.io.*; 
 
 public class Solution {
