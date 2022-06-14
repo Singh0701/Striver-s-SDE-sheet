@@ -50,3 +50,5 @@ public class Solution{
 
 // Time complexity = O((N^2 + N*log(N)))
 // Space Complexity = O(N + N + 2*N)
+
+//Approach 2:
