@@ -22,9 +22,12 @@
 //    or the pointer p1/p2 is not null yet. So just copy the remaining values from that list.
 // 5. Return the head to new Dummy list we created.  
   
-  
-class Solution {
+  class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        if(list1 == null)
+            return list2;
+        if(list2 == null)
+            return list1;
         ListNode head = new ListNode(0);
         ListNode temp = head;
         while(list1 != null && list2 != null) {
@@ -37,20 +40,15 @@ class Solution {
             }
             temp = temp.next;
         }
-        while(list1 != null) {
+        if(list1 != null) {
             temp.next = list1;
-            temp = temp.next;
-            list1 = list1.next;
         }
-        while(list2 != null) {
+        if(list2 != null) {
             temp.next = list2;
-            temp = temp.next;
-            list2 = list2.next;
         }
         return head.next;
     }
 }
-
 
 // Time complexity = O(N+M)
 // Space complexity = O(1)
