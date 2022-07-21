@@ -28,8 +28,7 @@ class Solution {
         //Storing at first before any further recursive call because we will be storing each and every subset we generate.
         result.add(new ArrayList<>(ds));
         //If index goes out of bound then return.
-        if(index >= nums.length)
-            return;
+        if(index >= nums.length) return;
         //For every index we have options to pick from index -> nums.length - 1, So for the same we'll run a for loop from index to length - 1.
         for(int i = index; i < nums.length; i++) {
             //If the current element has duplicates and it is not the first one (that is index != i or i > index) then we will not consider it to avoid duplicate subsets, and just continue to next index.
