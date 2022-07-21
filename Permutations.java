@@ -9,6 +9,10 @@
 // Input: nums = [0,1]
 // Output: [[0,1],[1,0]]
 
+//Solution:
+
+//Appraoch 1. Recursion with extra space.
+
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
@@ -38,3 +42,9 @@ class Solution {
 
 //Time complexity = O(N! * N) - N! forall the permutations recursive calls and N for the for loop from 0 to n we are running each time.
 //Space Complexity = O(N! + N + N + N) - N! for storing the all permutations, N for ds ArrayList, another N for Boolean array, and N for recursion stack space.
+
+//Approach 2: Recursion without extra space.
+
+
+//Time Complexity = 
+//Spcae Complexity = 
