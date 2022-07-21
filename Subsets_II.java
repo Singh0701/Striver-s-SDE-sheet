@@ -46,7 +46,7 @@ class Solution {
 }
 
 
-//Time complexity = O(2^n * k)
-//assuming k as the avg length of each subset we generate and it'll take O(k) time complexity to make a copy of the subset.
+//Time complexity = O(2^n * k) + O(n*log(n))
+//assuming k as the avg length of each subset we generate and it'll take O(k) time complexity to make a copy of the subset, and O(n*log(n)) for sorting array initially.
 //Space complexity = O(2^n * k) + O(n)
 //K is the Avg length of each subset, O(n) will be the stack space for recursion calls.
