@@ -99,3 +99,8 @@ class solve {
         return true;
     }
 }
+
+
+//Time complexity = O(N^M)
+//Space Complexity = O(N + N) - One N is for colors array and another N for stack space req. for the recursion calls.
+
