@@ -72,5 +72,35 @@ class Solution {
 // Approach 2: Optimal, Using Maths.
 
 
-
+class Solution {
+    public String getPermutation(int n, int k) {
+        int fact = 1;
+        List<Integer> nums = new ArrayList<>();
+        //Computing the (n - 1)! that is the block size of permutations, and also creating nums array consisting of 1 to n numbers.
+        for(int i = 1; i < n; i++) {
+            fact *= i;
+            nums.add(i);
+        }
+        nums.add(n);
+        //As we are using 0 based indexing, we'll update the value of K.
+        k = k - 1;
+        //Declaring string that'll store the Kth Permutation.
+        StringBuilder ans = new StringBuilder();
+        //Running a while loop till nums.size > 0.
+        while(true) {
+            //Getting the first num of the Kth Permutation that'll be present at (k / fact) index of nums array and then remove it from the array.
+            ans.append(nums.get(k / fact));
+            nums.remove(k / fact);
+            //If no more numbers to choose from then break.
+            if(nums.size() == 0) break;
+            //Update the fact and k.
+            k = k % fact;
+            fact = fact / nums.size();
+        }
+        return ans.toString();
+    }
+}
   
+// Time complexity: O(N * N)
+// Space complexity: O(N) 
+
