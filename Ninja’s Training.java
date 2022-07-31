@@ -77,13 +77,13 @@ public class Solution {
     }
 }
 
-//Approach 2: Using Memoization.
+//Approach 2: Using Recursion with Memoization.
 
 
 import java.util.*;
 public class Solution {
     public static int ninjaTraining(int n, int points[][]) {
-        //Make a 2D array to store the overlapping ssub-problems.
+        //Make a 2D array to store the overlapping sub-problems.
         int[][] dp = new int[n][4];
         return getMax(n - 1, points, 3, dp);
     }
@@ -118,9 +118,40 @@ public class Solution {
     }
 }
 
+// Time Complexity: O(N*4*3)
+// Space Complexity: O(N) + O(N*4)
 
 
 //Approach 3: Using Tabulation.
 
+import java.util.*;
+public class Solution {
+    public static int ninjaTraining(int n, int points[][]) {
+        //Make a 2D array to store the overlapping sub-problems.
+        int[][] dp = new int[n][4];
+        //Save the base case values, That is for day 0.
+        dp[0][0] =Math.max(points[0][1], points[0][2]);
+        dp[0][1] =Math.max(points[0][0], points[0][2]);
+        dp[0][2] =Math.max(points[0][0], points[0][1]);
+        dp[0][3] =Math.max(dp[0][0], dp[0][1]);
+        //Start from day 1 as day 0 has been already computed.
+        for(int day = 1; day < n; day++) {
+            //Last task value can range from 0 to 3 So we'll run a loop for same.
+            for(int lastTask = 0; lastTask < 4; lastTask++) {
+                //Try to perform all tasks from 0 to 2.
+                for(int task = 0; task < 3; task++) {
+                    //If it's not same as the task performed on previous day.
+                    if(task != lastTask) {
+                        int point = points[day][task] + dp[day - 1][task];
+                        dp[day][lastTask] = Math.max(dp[day][lastTask], point);
+                    }
+                }
+             }
+        }
+        return dp[n - 1][3];
+    }
+}
 
+
+//Approach 4: Space Optimization for Tabulation Approach.
 
