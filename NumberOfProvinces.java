@@ -78,3 +78,41 @@ class Solution {
 // Time Complexity = O(N^2) + O(2 * E)
 // N -> No. of nodes.
 // E -> No. of edges.
+
+
+//Approach 2: Using Depth First Search Algorithm (Recursive).    
+
+
+class Solution {
+    static int numProvinces(ArrayList<ArrayList<Integer>> adj, int N) {
+        int count = 0;
+        //Taking an visited array.
+        boolean[] visited = new boolean[N];
+        //Going through the given Adjacency Matrix and look if there is a connection betwen two vertex and if not visited then call a bfs traversal on that node.
+        for(int i = 0; i < adj.size(); i++) {
+            for(int j = 0; j < adj.get(i).size(); j++) {
+                if(adj.get(i).get(j) == 1 && !visited[j]) {
+                    //The above if condition will be true only when we enter a new Province hence increment the count variable and perform bfs.
+                    count++;
+                    dfs(i, adj, visited);
+                }
+            }
+        }
+        return count;
+    }
+    
+    //DFS Traversal.
+    public static void dfs(int node, ArrayList<ArrayList<Integer>> adj, boolean[] visited) {
+        visited[node] = true;
+        for(int i = 0; i < adj.get(node).size(); i++) {
+            if(!visited[i] && adj.get(node).get(i) == 1) {
+                dfs(i, adj, visited);
+            }
+        }
+    }
+    
+
+// Space Complexity = O(N + N)
+// Time Complexity = O(N) + O(V + E)
+// N -> No. of nodes.
+// E -> No. of edges.
