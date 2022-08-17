@@ -8,7 +8,7 @@
 
 // Example:
 
-// Solution :
+// Solution : Tabulation.
 
 import java.util.*;
 
@@ -46,3 +46,46 @@ public class Solution {
 
 // Time Complexity: O(N*M*M)*9
 // Space Complexity: O(N*M*M)
+
+
+
+// Solution : Space Optimized tabulation.
+
+import java.util.*;
+
+public class Solution {
+	public static int maximumChocolates(int r, int c, int[][] grid) {
+        int[][] next = new int[c][c];
+		int[] dj = {-1, 0, +1};
+        for(int j1 = 0; j1 < c; j1++) {
+            for(int j2 = 0; j2 < c; j2++) {
+                next[j1][j2] = (j1 == j2) ? grid[r - 1][j1] : grid[r - 1][j1] + grid[r - 1][j2];
+            }
+        }
+        for(int i = r - 2; i >= 0; i--) {
+            int[][] temp = new int[c][c];
+            for(int j1 = c - 1; j1 >= 0; j1--) {
+                for(int j2 = c - 1; j2 >= 0; j2--) {
+                    int maxi = (int) -1e8;
+                    for(int dj1: dj) {
+                        for(int dj2: dj) {
+                            int value = 0;
+                            value = (j1 == j2) ? grid[i][j1] : grid[i][j1] + grid[i][j2];
+                            if(j1 + dj1 >= 0 && j2 + dj2 >= 0 && j1 + dj1 < c && j2 + dj2 < c) 
+                                value += next[j1 + dj1][j2 + dj2];
+                            else value = (int)-1e8;
+                            maxi = Math.max(maxi, value);
+                        }
+                    }
+                    temp[j1][j2] = maxi;
+                }    
+            }
+            next = temp;
+        }
+        return next[0][c - 1];
+    }
+}
+
+
+// Time Complexity: O(N*M*M)*9
+// Space Complexity: O(M*M)
