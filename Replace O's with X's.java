@@ -1,50 +1,63 @@
 // Given an m x n matrix board containing 'X' and 'O', capture all regions that are 4-directionally surrounded by 'X'.
 // A region is captured by flipping all 'O's into 'X's in that surrounded region.
 
-class Solution{
-    static char[][] fill(int n, int m, char a[][])
-    {
+class Solution {
+    public void solve(char[][] board) {
+        int n = board.length;
+        int m = board[0].length;
         boolean[][] visited = new boolean[n][m];
-        //Traverse first and last row.
-        for(int j = 0; j < m; j++) {
-            if(!visited[0][j] && a[0][j] == 'O')
-                    dfs(0, j, a, visited, n, m);
-            if(!visited[n - 1][j] && a[n - 1][j] == 'O') 
-                    dfs(n - 1, j, a, visited, n, m);
-        }
         
-        //First and last column.
-        for(int i = 0; i < n; i++) {
-            if(!visited[i][0] && a[i][0] == 'O')
-                    dfs(i, 0, a, visited, n, m);
-            if(!visited[i][m - 1] && a[i][m - 1] == 'O') 
-                    dfs(i, m - 1, a, visited, n, m);
-        }
+        int[] dx = {0, 1, 0, -1};
+        int[] dy = {1, 0, -1, 0};
         
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < m; j++) {
-                if(!visited[i][j]) 
-                    a[i][j] = 'X';
+        //Check first and last row for 'O's.
+        for(int col = 0; col < m; col++) {
+            //First row.
+            if(board[0][col] == 'O' && !visited[0][col]) {
+                dfs(0, col, board, visited, dx, dy);
+            }
+            //Last row.
+            if(board[n - 1][col] == 'O' && !visited[n - 1][col]) {
+                dfs(n-1, col, board, visited, dx, dy);
             }
         }
-        return a;
+        
+        //Check first and last col for 'O's.
+        for(int row = 0; row < n; row++) {
+            //First col.
+            if(board[row][0] == 'O' && !visited[row][0]) {
+                dfs(row, 0, board, visited, dx, dy);
+            }
+            //Last col.
+            if(board[row][m - 1] == 'O' && !visited[row][m - 1]) {
+                dfs(row, m - 1, board, visited, dx, dy);
+            }
+        }
+        
+        for(int row = 0; row < n; row++) {
+            for(int col = 0; col < m; col++) {
+                if(!visited[row][col]) {
+                    board[row][col] = 'X';
+                }
+            }
+        }
     }
     
-    static void dfs(int row, int col, char[][] a, boolean[][] visited, int n, int m) {
+    public void dfs(int row, int col, char[][] board, boolean[][] visited, int[] dx, int[] dy) {
         visited[row][col] = true;
-        int[] dx = {-1, 0, 1, 0};
-        int[] dy = {0, 1, 0, -1};
-        
         for(int i = 0; i < 4; i++) {
-            int nRow = row + dx[i];
-            int nCol = col + dy[i];
-            if(isValid(nRow, nCol, n, m) && a[nRow][nCol] == 'O' && !visited[nRow][nCol]) {
-                dfs(nRow, nCol, a, visited, n, m);
+            int newRow = row + dx[i];
+            int newCol = col + dy[i];
+            if(isValid(newRow, newCol, board, visited)) {
+                dfs(newRow, newCol, board, visited, dx, dy);
             }
         }
     }
-    static boolean isValid(int i, int j, int n, int m) {
-        return i >= 0 && j >= 0 && i < n && j < m;
+    
+    public boolean isValid(int row, int col, char[][] board, boolean[][] visited) {
+        int n = board.length;
+        int m = board[0].length;
+        return (row < n && col < m && row >= 0 && col >= 0 && !visited[row][col] && board[row][col] == 'O');
     }
 }
 
