@@ -1,3 +1,6 @@
+// Given an m x n matrix board containing 'X' and 'O', capture all regions that are 4-directionally surrounded by 'X'.
+// A region is captured by flipping all 'O's into 'X's in that surrounded region.
+
 class Solution{
     static char[][] fill(int n, int m, char a[][])
     {
@@ -44,3 +47,8 @@ class Solution{
         return i >= 0 && j >= 0 && i < n && j < m;
     }
 }
+
+
+
+//Time complexity = O(N+M) * 2 + O(N*M)
+//Space complexity = O(N*M)
