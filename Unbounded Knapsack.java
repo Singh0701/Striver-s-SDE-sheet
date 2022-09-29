@@ -108,4 +108,30 @@ public class Solution {
 }
 
 //Time complexity = O(N * W)
+//Space complexity = O(W) * 2
+
+
+//1D Array Space optimization:
+
+
+class Solution{
+    static int knapSack(int n, int w, int profit[], int weight[])
+    {
+        int[] prev = new int[w+1];
+        for(int wt = 0; wt <= w; wt++) {
+            prev[wt] = (wt >= weight[0]) ? (profit[0] * (wt / weight[0])) : 0;
+        }
+        prev[0] = (int) -1e9;
+        for(int index = 1; index < n; index++) {
+            for(int cap = 0; cap <= w; cap++) {
+                int pick = (cap >= weight[index]) ? profit[index] + prev[cap - weight[index]]: 0;
+                int notPick = prev[cap];
+                prev[cap] = Math.max(pick, notPick);
+            }
+        }
+        return prev[w];
+    }
+}
+
+//Time complexity = O(N * W)
 //Space complexity = O(W)
